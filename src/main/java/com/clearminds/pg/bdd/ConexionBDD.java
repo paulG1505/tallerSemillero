@@ -1,5 +1,6 @@
 package com.clearminds.pg.bdd;
 
+import java.io.File;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,8 +12,11 @@ import com.clearminds.pg.excepciones.BDDExcepcion;
 public class ConexionBDD {
 
 	public static String leerPropiedad(String propiedad) {
+		File f=new File("conexion.properties");
+		System.out.println("ruta:"+f.getAbsoluteFile());
 		try {
-			FileReader reader = new FileReader("conexion.properties");
+
+			FileReader reader = new FileReader("/Users/paulguaman/Documents/workspace/tallerSemillero/conexion.properties");
 			Properties p = new Properties();
 			p.load(reader);
 			String res= (p.getProperty(propiedad));
@@ -24,9 +28,10 @@ public class ConexionBDD {
 	}
 	
 	public static Connection obtenerConexion() throws BDDExcepcion{
-
+		File f=new File("conexion.properties");
+		System.out.println("ruta:"+f.getAbsoluteFile());
 		try {
-			FileReader reader = new FileReader("conexion.properties");
+			FileReader reader = new FileReader("/Users/paulguaman/Documents/workspace/tallerSemillero/conexion.properties");
 			Properties p = new Properties();
 			p.load(reader);
 			String usuario= (p.getProperty("usuario"));
